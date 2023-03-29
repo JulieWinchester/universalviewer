@@ -4,8 +4,8 @@ buildcache
 ## TypeScript
 #################
 
-.tscache
-typings
+#.tscache
+#typings
 
 #################
 ## Webstorm
@@ -37,10 +37,10 @@ node_modules
 ## JavaScript
 #################
 
-*.js
-*.js.map
-*.min.map
-/config.js
+#*.js
+#*.js.map
+#*.min.map
+#/config.js
 !src/extensions/*/config.js
 !src/js/*.js
 !src/*/*/js/*.js
