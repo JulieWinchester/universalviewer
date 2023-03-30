@@ -1,6 +1,6 @@
 .buildcache
-dist
-uv-dist-umd
+#dist
+#uv-dist-umd
 www
 examples
 
@@ -51,9 +51,9 @@ node_modules
 ## JavaScript
 #################
 
-*.js
-*.js.map
-*.min.map
+#*.js
+#*.js.map
+#*.min.map
 !tasks/*.js
 /config.js
 !src/extensions/*/config.js
@@ -83,7 +83,7 @@ src/extensions/*/.build
 ## Dist
 #################
 
-dist
+#dist
 
 #################
 ## Themes
