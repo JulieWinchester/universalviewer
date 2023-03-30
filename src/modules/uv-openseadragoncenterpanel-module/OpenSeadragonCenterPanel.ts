@@ -180,7 +180,8 @@ export class OpenSeadragonCenterPanel extends CenterPanel {
     this.$content.append(this.$spinner);
 
     // Transparent pixel
-    const pixel = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
+    const pixel =
+      "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==";
 
     this.viewer = OpenSeadragon({
       // id: this.viewerId,
