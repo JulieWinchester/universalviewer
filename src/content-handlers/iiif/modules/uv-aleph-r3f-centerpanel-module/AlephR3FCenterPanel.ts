@@ -29,6 +29,7 @@ export class AlephR3FCenterPanel extends CenterPanel<
 
     super.create();
 
+    console.log('test to get vercel to deploy');
     const that = this;
 
     this.$viewerContainer = $('<div id="viewer"></div>');
