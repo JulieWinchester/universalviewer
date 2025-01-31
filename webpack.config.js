@@ -13,6 +13,12 @@ const config = [
       UV: ["./src/index.ts"],
     },
     mode: "production",
+    externals: {
+      'node-fetch': 'node-fetch',
+      'fetch-cookie/node-fetch': 'fetch-cookie/node-fetch',
+      'form-data': 'form-data',
+      'url': 'url',
+    },
     output: {
       path: resolvePath("dist/umd"),
       publicPath: "auto",

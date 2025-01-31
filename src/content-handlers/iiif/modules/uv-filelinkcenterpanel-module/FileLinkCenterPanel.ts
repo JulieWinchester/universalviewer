@@ -8,6 +8,7 @@ import {
   Canvas,
   IExternalResource,
   LanguageMap,
+  SpecificResource,
 } from "manifesto.js";
 import { Events } from "../../../../Events";
 import { Config } from "../../extensions/uv-default-extension/config/Config";
@@ -69,7 +70,7 @@ export class FileLinkCenterPanel extends CenterPanel<
       const $thumb: JQuery = $item.find("img");
       const $description: JQuery = $item.find(".description");
 
-      const annotationBody: AnnotationBody = annotation.getBody()[0];
+      const annotationBody: AnnotationBody | SpecificResource = annotation.getBody()[0];
 
       const id: string | null = annotationBody.getProperty("id");
 

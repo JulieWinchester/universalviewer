@@ -8,6 +8,7 @@ import {
   Canvas,
   Annotation,
   AnnotationBody,
+  SpecificResource,
 } from "manifesto.js";
 
 import {
@@ -124,9 +125,9 @@ export class EbookCenterPanel extends CenterPanel<
 
       if (annotations.length) {
         const annotation: Annotation = annotations[0];
-        const body: AnnotationBody[] = annotation.getBody();
+        const body: (AnnotationBody | SpecificResource)[] = annotation.getBody();
 
-        if (body.length) {
+        if (body.length && body[0] instanceof AnnotationBody) {
           const media: AnnotationBody = body[0];
           //const format: MediaType | null = media.getFormat();
 

@@ -11,6 +11,7 @@ import {
   LanguageMap,
   ManifestResource,
   Rendering,
+  SpecificResource,
 } from "manifesto.js";
 import { RenderingFormat, MediaType } from "@iiif/vocabulary/dist-commonjs/";
 import { ILabelValuePair } from "@iiif/manifold";
@@ -128,9 +129,9 @@ export class DownloadDialogue extends Dialogue<
 
         for (let i = 0; i < annotations.length; i++) {
           const annotation: Annotation = annotations[i];
-          const body: AnnotationBody[] = annotation.getBody();
+          const body: (AnnotationBody | SpecificResource)[] = annotation.getBody();
 
-          if (body.length) {
+          if (body.length && body[0] instanceof AnnotationBody) {
             const format: MediaType | null = body[0].getFormat();
 
             if (format) {

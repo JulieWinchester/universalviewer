@@ -10,6 +10,11 @@ const config = {
   },
   mode: "development",
   devtool: "eval-source-map",
+  externals: {
+    'node-fetch': 'node-fetch',
+    'fetch-cookie/node-fetch': 'fetch-cookie/node-fetch',
+    'form-data': 'form-data',
+  },
   output: {
     libraryTarget: "umd",
     library: "UV",
@@ -82,7 +87,7 @@ const config = {
     static: path.join(__dirname),
     open: true,
     compress: true,
-    port: 8080,
+    port: 8081,
     onListening(devServer) {
       devServer.app.use("/docs", express.static(path.join(__dirname, "docs")));
       devServer.app.use(
@@ -104,6 +109,10 @@ const config = {
       devServer.app.use(
         "/uv.css",
         express.static(path.join(__dirname, "src", "uv.css"))
+      );
+      devServer.app.use(
+        "/model_origin.json",
+        express.static(path.join(__dirname, "src", "model_origin.json"))
       );
     },
   },

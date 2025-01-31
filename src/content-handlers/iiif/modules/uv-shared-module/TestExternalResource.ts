@@ -9,6 +9,7 @@ import {
   IExternalResourceOptions,
   Resource,
   Service,
+  SpecificResource,
   Utils,
 } from "manifesto.js";
 
@@ -73,9 +74,9 @@ export class ExternalResource implements IExternalResource {
     // presentation 3
     if (content && content.length) {
       const annotation: Annotation = content[0];
-      const annotationBody: AnnotationBody[] = annotation.getBody();
+      const annotationBody: (AnnotationBody | SpecificResource)[] = annotation.getBody();
 
-      if (annotationBody.length) {
+      if (annotationBody.length && annotationBody[0] instanceof AnnotationBody) {
         const body: AnnotationBody = annotationBody[0];
         const services: Service[] = body.getServices();
 
@@ -167,9 +168,9 @@ export class ExternalResource implements IExternalResource {
         const content: Annotation[] = (<Canvas>resource).getContent();
 
         if (content && content.length) {
-          const body: AnnotationBody[] = content[0].getBody();
+          const body: (AnnotationBody | SpecificResource)[] = content[0].getBody();
 
-          if (body && body.length) {
+          if (body && body.length && body[0] instanceof AnnotationBody) {
             const annotation: AnnotationBody = body[0];
             resource = annotation;
           }
@@ -277,9 +278,9 @@ export class ExternalResource implements IExternalResource {
 
       if (images.length) {
         const annotation: Annotation = images[0];
-        const body: AnnotationBody[] = annotation.getBody();
+        const body: (AnnotationBody | SpecificResource)[] = annotation.getBody();
 
-        if (body.length) {
+        if (body.length && body[0] instanceof AnnotationBody) {
           this.width = body[0].getWidth();
           this.height = body[0].getHeight();
         }

@@ -15,7 +15,7 @@ import {
   ExternalResourceType,
 } from "@iiif/vocabulary/dist-commonjs/";
 import { Helper, loadManifest, IManifoldOptions } from "@iiif/manifold";
-import { Annotation, AnnotationBody, Canvas } from "manifesto.js";
+import { Annotation, AnnotationBody, Canvas, SpecificResource } from "manifesto.js";
 import "../../uv.css";
 import "./themes/theme.less";
 import { IContentHandler } from "@/IContentHandler";
@@ -335,9 +335,9 @@ export default class IIIFContentHandler extends BaseContentHandler<IIIFData>
 
       if (content.length) {
         const annotation: Annotation = content[0];
-        const body: AnnotationBody[] = annotation.getBody();
+        const body: (AnnotationBody | SpecificResource)[] = annotation.getBody();
 
-        if (body && body.length) {
+        if (body && body.length && body[0] instanceof AnnotationBody) {
           format = body[0].getFormat() as string;
 
           if (format) {

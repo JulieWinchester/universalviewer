@@ -1,5 +1,5 @@
 const $ = require("jquery");
-import { AnnotationBody, Canvas, IExternalResource } from "manifesto.js";
+import { AnnotationBody, Canvas, IExternalResource, SpecificResource } from "manifesto.js";
 import { sanitize } from "../../../../Utils";
 import { IIIFEvents } from "../../IIIFEvents";
 import { CenterPanel } from "../uv-shared-module/CenterPanel";
@@ -59,7 +59,7 @@ export class AlephR3FCenterPanel extends CenterPanel<
 
     let mediaUri: string | null = null;
     let canvas: Canvas = this.extension.helper.getCurrentCanvas();
-    const formats: AnnotationBody[] | null = this.extension.getMediaFormats(
+    const formats: (AnnotationBody | SpecificResource)[] | null = this.extension.getMediaFormats(
       canvas
     );
 

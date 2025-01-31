@@ -9,6 +9,7 @@ import {
   Annotation,
   AnnotationBody,
   Service,
+  SpecificResource,
 } from "manifesto.js";
 import { debounce, sanitize } from "../../../../Utils";
 import { ViewingDirection } from "@iiif/vocabulary";
@@ -570,7 +571,7 @@ export class OpenSeadragonCenterPanel extends CenterPanel<
 
       if (annotations.length) {
         const annotation: Annotation = annotations[0];
-        const body: AnnotationBody[] = annotation.getBody();
+        const body: (AnnotationBody | SpecificResource)[] = annotation.getBody();
 
         if (body.length) {
           const services: Service[] = body[0].getServices();

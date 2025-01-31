@@ -969,9 +969,9 @@ export class BaseExtension<T extends BaseConfig> implements IExtension {
   getMediaFormats(canvas: Canvas): AnnotationBody[] {
     const annotations: Annotation[] = canvas.getContent();
 
-    if (annotations && annotations.length) {
+    if (annotations && annotations.length && annotations[0].getBody().every((body) => body instanceof AnnotationBody)) {
       const annotation: Annotation = annotations[0];
-      return annotation.getBody();
+      return annotation.getBody().filter((body) => body instanceof AnnotationBody) as AnnotationBody[];
     } else {
       // legacy IxIF compatibility
       const body: AnnotationBody = <any>{

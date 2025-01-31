@@ -44,6 +44,7 @@ import {
   Size,
   Utils,
   Manifest,
+  SpecificResource,
 } from "manifesto.js";
 import "./theme/theme.less";
 import { AnnotationResults } from "../../modules/uv-shared-module/AnnotationResults";
@@ -1326,7 +1327,7 @@ export default class OpenSeadragonExtension extends BaseExtension<Config> {
       images = canvas.getContent();
 
       const firstImage: Annotation = images[0];
-      const body: AnnotationBody[] = firstImage.getBody();
+      const body: ( AnnotationBody | SpecificResource)[] = firstImage.getBody();
 
       if (body.length) {
         const services: Service[] = body[0].getServices();

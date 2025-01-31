@@ -5,7 +5,7 @@ import {
   ExternalResourceType,
   ViewingDirection,
 } from "@iiif/vocabulary/dist-commonjs/";
-import { Annotation, AnnotationBody, Canvas, Thumb } from "manifesto.js";
+import { Annotation, AnnotationBody, Canvas, SpecificResource, Thumb } from "manifesto.js";
 import * as KeyCodes from "@edsilv/key-codes";
 import { Dates, Keyboard, Maths, Strings } from "@edsilv/utils";
 import { ExtendedLeftPanel } from "../../extensions/config/ExtendedLeftPanel";
@@ -221,9 +221,9 @@ export class ThumbsView<T extends ExtendedLeftPanel> extends BaseView<T> {
 
     if (annotations.length) {
       const annotation: Annotation = annotations[0];
-      const body: AnnotationBody[] = annotation.getBody();
+      const body: (AnnotationBody | SpecificResource)[] = annotation.getBody();
 
-      if (body.length) {
+      if (body.length && body[0] instanceof AnnotationBody) {
         const type: ExternalResourceType | null = body[0].getType();
 
         if (type) {

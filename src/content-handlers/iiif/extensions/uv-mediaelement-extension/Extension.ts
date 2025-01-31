@@ -23,6 +23,7 @@ import {
   Canvas,
   Annotation,
   AnnotationBody,
+  SpecificResource,
 } from "manifesto.js";
 import { TFragment } from "../../modules/uv-shared-module/TFragment";
 import "./theme/theme.less";
@@ -267,10 +268,11 @@ export default class Extension extends BaseExtension<Config>
     const annotations: Annotation[] = canvas.getContent();
 
     if (annotations && annotations.length) {
-      const formats: AnnotationBody[] | null = this.getMediaFormats(canvas);
+      const formats: (AnnotationBody | SpecificResource)[] |  null = this.getMediaFormats(canvas);
 
       for (let i = 0; i < formats.length; i++) {
-        const format: AnnotationBody = formats[i];
+        if (!(formats[i] instanceof AnnotationBody)) continue;
+        const format: AnnotationBody = formats[i] as AnnotationBody;
         const type: MediaType | null = format.getFormat();
 
         if (type) {
