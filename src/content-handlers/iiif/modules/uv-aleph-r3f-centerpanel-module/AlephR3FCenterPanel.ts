@@ -71,6 +71,7 @@ export class AlephR3FCenterPanel extends CenterPanel<
 
     this.viewerRoot.render(
       createElement(Viewer, {
+        envPreset: 'warehouse',
         src: mediaUri,
         onLoad: (e) => {
           this.resize();
